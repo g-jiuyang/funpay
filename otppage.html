@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <!-- opening -->
+    <div class="all main-top">
+        <h3 class="mt-5">一些說明，告訴使用者為何要驗證手機。一些說明，告訴使用者為何要驗證手機。</h3>
+
+        <form class="otp-input">
+            <h2>手機號碼 (Mobile)</h2>
+            <div class="input-group row mx-0">
+                <div class="col-5 pl-0 pr-2">
+                    <select class="form-control" id="country">
+                        <option>臺灣 (TW)</option>
+                        <option>美國 (US)</option>
+                        <option>日本 (JP)</option>
+                        <option>韓國 (KR)</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="input-group col-7 p-0">
+                    <input type="tel" class="form-control" placeholder="0987654321" aria-label="0987654321">
+                    <div class="input-group-append">
+                        <button class="btn btn-link" type="button" id="varify-btn">傳送驗證碼</button>
+                    </div>
+                </div>
+            </div>
+            <h2>簡訊驗證碼</h2>
+            <input name="varify" type="text" placeholder="請輸入簡訊驗證碼">
+            <label class="warning" for="varify">* 簡訊驗證碼錯誤，請重新輸入（剩餘次數 2/3）</label>
+            <div class="button-fixed">
+                <button> 確認 </button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- footer button -->
+    <!-- <div class="button-fixed">
+        <button class="button-outline">打開橘子支付</button>
+        <button class="button-outline">回到 beanfun! 背包</button>
+    </div> -->
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.6.3.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+</body>

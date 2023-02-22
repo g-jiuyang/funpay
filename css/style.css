@@ -54,7 +54,6 @@ h5 {
 
 p {
   font-family: PingFang TC, Microsoft Yahei, 微軟正黑體, Arial, Helvetica, sans-serif;
-  ;
   font-style: normal;
   font-weight: 400;
   font-size: 1.3rem;
@@ -194,6 +193,7 @@ input[type="number"] {
   appearance: none;
   line-height: 160%;
   width: 100%;
+  height: 45px;
 
   padding: 10px;
   padding-left: 12px;
@@ -431,4 +431,87 @@ button:disabled {
 
 .error button {
   margin-top: 32px;
+}
+
+/* OTP 頁面樣式 */
+.otp-input h2 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.otp-input input,
+.otp-input select,
+.otp-input .btn {
+  line-height: 160%;
+  width: 100%;
+  height: 45px;
+  padding: 10px 12px;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0.5px solid;
+  border-color: #DDDDDD !important;
+  border-radius: 10px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  font-family: PingFang TC, Microsoft Yahei, Arial, Helvetica, sans-serif;
+  color: #333333;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  background-color: #ffffff;
+}
+
+.otp-input input:focus,
+.otp-input select:focus,
+.otp-input .btn:focus {
+  outline: none;
+}
+
+.otp-input input::placeholder {
+  color: #cccccc;
+  font-family: PingFang TC, Microsoft Yahei, 微軟正黑體, Arial, Helvetica, sans-serif;
+}
+
+.otp-input select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  padding-right: 32px;
+  background-image: url(../images/icon-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1em;
+}
+
+.otp-input .btn-link {
+  color: #26D07C
+}
+
+.otp-input .input-group:not(.row) input {
+  border-right: none;
+}
+
+.otp-input .input-group:not(.row) button {
+  border-left: none;
+  font-size: 1.3rem;
+}
+
+.otp-input .input-group:not(.row) button[disabled] {
+  background-color: #ffffff;
+  color: #cccccc;
+  opacity: 1;
+}
+
+.otp-input .warning {
+  margin-top: 4px;
+  color: #FF9500;
+  font-size: 1.3rem;
+}
+
+.otp-input .button-fixed {
+  margin-top: 40px;
 }
