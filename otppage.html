@@ -14,7 +14,7 @@
 
     <!-- opening -->
     <div class="all main-top">
-        <h3 class="mt-5">一些說明，告訴使用者為何要驗證手機。一些說明，告訴使用者為何要驗證手機。</h3>
+        <h3 class="mt-5">為了確保交易安全，請先完成簡訊OPT驗證。<br>請確認您輸入的手機號碼可以收到簡訊。</h3>
 
         <form class="otp-input">
             <h2>手機號碼 (Mobile)</h2>
@@ -29,7 +29,8 @@
                     </select>
                 </div>
                 <div class="input-group col-7 p-0">
-                    <input type="tel" class="form-control" placeholder="0987654321" aria-label="0987654321">
+                    <input type="tel" id="tel-input" class="form-control" placeholder="0987654321"
+                        aria-label="0987654321">
                     <div class="input-group-append">
                         <button class="btn btn-link" type="button" id="varify-btn">傳送驗證碼</button>
                     </div>
@@ -37,25 +38,49 @@
             </div>
             <h2>簡訊驗證碼</h2>
             <input name="varify" type="text" placeholder="請輸入簡訊驗證碼">
-            <label class="warning" for="varify">* 簡訊驗證碼錯誤，請重新輸入（剩餘次數 2/3）</label>
+            <label id="varify-warning" class="warning" for="varify"></label>
             <div class="button-fixed">
-                <button> 確認 </button>
+                <button id="submit" type="button"> 確認 </button>
             </div>
         </form>
     </div>
-
-
-    <!-- footer button -->
-    <!-- <div class="button-fixed">
-        <button class="button-outline">打開橘子支付</button>
-        <button class="button-outline">回到 beanfun! 背包</button>
-    </div> -->
 
 
 
     <!-- jQuery -->
     <script src="js/jquery-3.6.3.min.js"></script>
 
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var clicked = false;
+        $('#varify-btn').click(function () {
+            if (!clicked) {
+                clicked = true;
+                $(this).prop('disabled', true).text('60 s');
+                $('#tel-input').prop('disabled', true);
+                var count = 60;
+                var interval = setInterval(function () {
+                    count--;
+                    $('#varify-btn').text(count + ' s');
+                    if (count == 0) {
+                        clearInterval(interval);
+                        $('#varify-btn').prop('disabled', false).text('傳送驗證碼');
+                    }
+                }, 1000);
+            } else {
+                $(this).addClass('disabled').prop('disabled', true).text('已傳送');
+            }
+        });
+
+        var clickCount = 0;
+        $('#submit').click(function () {
+            clickCount++;
+            var remainingCount = 3 - clickCount;
+            $('#varify-warning').text('* 簡訊驗證碼錯誤，請重新輸入（剩餘次數 ' + remainingCount + '/3）');
+            if (clickCount === 3) {
+                alert('簡訊OTP驗證錯誤，請先確認您輸入的手機號碼可以收到簡訊再重新下單，謝謝');
+                window.location = 'famipage.html';
+            }
+        })
+    </script>
 </body>

@@ -465,8 +465,10 @@ button:disabled {
 
 .otp-input input:focus,
 .otp-input select:focus,
-.otp-input .btn:focus {
+.otp-input .btn:focus,
+.otp-input button:focus {
   outline: none;
+  box-shadow: none;
 }
 
 .otp-input input::placeholder {
@@ -491,19 +493,28 @@ button:disabled {
   color: #26D07C
 }
 
-.otp-input .input-group:not(.row) input {
+.otp-input #tel-input {
   border-right: none;
 }
 
-.otp-input .input-group:not(.row) button {
-  border-left: none;
-  font-size: 1.3rem;
+.otp-input #tel-input[disabled] {
+  background-color: #ffffff;
+  color: #999999;
 }
 
-.otp-input .input-group:not(.row) button[disabled] {
+.otp-input #varify-btn {
+  border-left: none;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.otp-input #varify-btn.disabled {
   background-color: #ffffff;
   color: #cccccc;
-  opacity: 1;
+}
+
+.otp-input #varify-btn[disabled] {
+  opacity: 1 !important;
 }
 
 .otp-input .warning {
