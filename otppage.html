@@ -19,7 +19,7 @@
         <form class="otp-input">
             <h2>手機號碼 (Mobile)</h2>
             <div class="input-group row mx-0">
-                <div class="col-5 pl-0 pr-2">
+                <div class="col-4 pl-0 pr-2">
                     <select class="form-control" id="country">
                         <option>臺灣 (TW)</option>
                         <option>美國 (US)</option>
@@ -28,16 +28,15 @@
                         <option>中國 (CN)</option>
                     </select>
                 </div>
-                <div class="input-group col-7 p-0">
-                    <input type="tel" id="tel-input" class="form-control" placeholder="0987654321"
-                        aria-label="0987654321">
+                <div class="input-group col-8 p-0">
+                    <input type="tel" id="tel-input" class="form-control" placeholder="請輸入電話號碼" aria-label="請輸入電話號碼">
                     <div class="input-group-append">
                         <button class="btn btn-link" type="button" id="varify-btn">傳送驗證碼</button>
                     </div>
                 </div>
             </div>
             <h2>簡訊驗證碼</h2>
-            <input name="varify" type="text" placeholder="請輸入簡訊驗證碼">
+            <input id="varify" name="varify" type="text" placeholder="請輸入驗證碼">
             <label id="varify-warning" class="warning" for="varify"></label>
             <div class="button-fixed">
                 <button id="submit" type="button"> 確認 </button>
@@ -52,33 +51,30 @@
 
 
     <script type="text/javascript">
-        var clicked = false;
         $('#varify-btn').click(function () {
-            if (!clicked) {
-                clicked = true;
-                $(this).prop('disabled', true).text('60 s');
-                $('#tel-input').prop('disabled', true);
-                var count = 60;
-                var interval = setInterval(function () {
-                    count--;
-                    $('#varify-btn').text(count + ' s');
-                    if (count == 0) {
-                        clearInterval(interval);
-                        $('#varify-btn').prop('disabled', false).text('傳送驗證碼');
-                    }
-                }, 1000);
-            } else {
-                $(this).addClass('disabled').prop('disabled', true).text('已傳送');
-            }
+            $(this).prop('disabled', true).text('60s');
+            $('#tel-input').prop('disabled', true);
+            var count = 60;
+            var interval = setInterval(function () {
+                count--;
+                $('#varify-btn').text(count + 's');
+                if (count == 0) {
+                    clearInterval(interval);
+                    $('#varify-btn').prop('disabled', false).text('傳送驗證碼');
+                }
+            }, 1000);
         });
+
+
 
         var clickCount = 0;
         $('#submit').click(function () {
+            $('#varify').val('');
             clickCount++;
             var remainingCount = 3 - clickCount;
             $('#varify-warning').text('* 簡訊驗證碼錯誤，請重新輸入（剩餘次數 ' + remainingCount + '/3）');
             if (clickCount === 3) {
-                alert('簡訊OTP驗證錯誤，請先確認您輸入的手機號碼可以收到簡訊再重新下單，謝謝');
+                alert('很抱歉此號碼已被鎖定，若要進行交易請與客服聯繫，或是改用其他號碼完成OTP驗證');
                 window.location = 'famipage.html';
             }
         })
