@@ -50,9 +50,9 @@
 
     <script type="text/javascript">
         $('#varify-btn').click(function () {
-            $(this).prop('disabled', true).text('60s');
-            $('#tel-input').prop('disabled', true);
-            var count = 60;
+            $(this).prop('disabled', true).text('3s');
+            // $('#tel-input').prop('disabled', true);
+            var count = 3;
             var interval = setInterval(function () {
                 count--;
                 $('#varify-btn').text(count + 's');
