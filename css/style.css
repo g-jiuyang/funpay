@@ -494,23 +494,23 @@ button:disabled {
 }
 
 .otp-input #tel-input {
-  border-right: none;
+  padding-right: 9rem;
 }
 
 .otp-input #tel-input[disabled] {
-  background-color: #ffffff;
+  background: #ffffff;
   color: #999999;
 }
 
 .otp-input #varify-btn {
-  border-left: none;
   font-size: 1.3rem;
   text-decoration: none;
-}
-
-.otp-input #varify-btn.disabled {
-  background-color: #ffffff;
-  color: #cccccc;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: max-content;
+  background: transparent;
+  border: none;
 }
 
 .otp-input #varify-btn[disabled] {
